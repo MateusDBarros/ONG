@@ -15,8 +15,7 @@ public class OngService {
         this.repository = repository;
     }
 
-    // Regras de negocio
-
+    // Regras de negócio
     // Metodo para checagem de excessões
     public boolean check(Ong ong) {
         if (ong.getNome() == null || ong.getNome().isEmpty())
