@@ -1,7 +1,7 @@
-package mb.projeto.ONG.Ongs.Controller;
+package mb.projeto.ONG.ongs.Controller;
 
-import mb.projeto.ONG.Ongs.Model.Ong;
-import mb.projeto.ONG.Ongs.Service.OngService;
+import mb.projeto.ONG.ongs.Model.Ong;
+import mb.projeto.ONG.ongs.Service.OngService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

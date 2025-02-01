@@ -1,4 +1,4 @@
-package mb.projeto.ONG.Ongs.Model;
+package mb.projeto.ONG.ongs.Model;
 
 public class Ong {
 

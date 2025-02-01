@@ -1,7 +1,7 @@
-package mb.projeto.ONG.Ongs.Service;
+package mb.projeto.ONG.ongs.Service;
 
-import mb.projeto.ONG.Ongs.Model.Ong;
-import mb.projeto.ONG.Ongs.Repository.OngRepository;
+import mb.projeto.ONG.ongs.Model.Ong;
+import mb.projeto.ONG.ongs.Repository.OngRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

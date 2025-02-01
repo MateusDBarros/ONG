@@ -1,7 +1,7 @@
-package mb.projeto.ONG.Ongs.Repository;
+package mb.projeto.ONG.ongs.Repository;
 
-import mb.projeto.ONG.Ongs.Model.Categoria;
-import mb.projeto.ONG.Ongs.Model.Ong;
+import mb.projeto.ONG.ongs.Model.Categoria;
+import mb.projeto.ONG.ongs.Model.Ong;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
