@@ -16,8 +16,8 @@ public class DoacaoRepository {
     }
 
     public void novaDoacao(Doacao doacao) {
-        String sql = "INSERT INTO doacoes (doacaoID, ongID, doadorID, data, valor) VALUES (?, ?, ?, ?, ?)";
-        jdbc.update(sql, doacao.getDoacaoID(), doacao.getOngID(), doacao. getDoadorID(), doacao.getData(), doacao.getValor());
+        String sql = "INSERT INTO doacoes (ongID, doadorID, data, valor) VALUES (?, ?, ?, ?)";
+        jdbc.update(sql, doacao.getOngID(), doacao.getDoadorID(), doacao.getData(), doacao.getValor());
     }
 
     public List<Doacao> listarDoacoes() {
