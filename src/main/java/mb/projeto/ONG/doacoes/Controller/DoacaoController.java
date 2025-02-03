@@ -31,5 +31,8 @@ public class DoacaoController {
     }
 
     @GetMapping("/{id}")
-
+    public ResponseEntity<Doacao> findById(long id) {
+        Doacao doacoa = services.findById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(doacoa);
+    }
 }

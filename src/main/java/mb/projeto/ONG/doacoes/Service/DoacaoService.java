@@ -33,6 +33,4 @@ public class DoacaoService {
             throw new IllegalStateException("Doação com ID #" +id+ " não encontrada.");
         return repository.findById(id);
     }
-
-
 }
