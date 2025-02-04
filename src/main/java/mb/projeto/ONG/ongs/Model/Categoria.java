@@ -1,19 +1,34 @@
 package mb.projeto.ONG.ongs.Model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum Categoria {
-    EDUCACAO ("Educação"),
-    SAUDE ("Saúde"),
-    AMBIENTE ("Meio Ambiente"),
-    DIREITOS ("Direitos dos Animais"),
-    PROTECAO ("Proteção das Minorias");
+    SAUDE("Saúde"),
+    PROTECAO("Proteção"),
+    AMBIENTE("Ambiente"),
+    DIREITOS("Direitos"),
+    EDUCACAO("Saúde e Educação"); // Defina o valor que deseja aceitar
 
-    private final String descricao;
+    private final String label;
 
-    Categoria(String descricao) {
-        this.descricao = descricao;
+    Categoria(String label) {
+        this.label = label;
     }
 
-    public String getDescricao() {
-        return descricao;
+    @JsonValue
+    public String getLabel() {
+        return label;
+    }
+
+    @JsonCreator
+    public static Categoria fromString(String value) {
+        for (Categoria categoria : Categoria.values()) {
+            // Compara tanto o nome do enum quanto o label, ignorando diferenças de maiúsculas/minúsculas
+            if (categoria.name().equalsIgnoreCase(value) || categoria.label.equalsIgnoreCase(value)) {
+                return categoria;
+            }
+        }
+        throw new IllegalArgumentException("Valor inválido para Categoria: " + value);
     }
 }

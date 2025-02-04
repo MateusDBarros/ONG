@@ -17,7 +17,7 @@ public class DoadorRepository {
 
     // Adicionar novo doador
     public void novoDoador(Doador doador) {
-        String sql = "INSERT INTO doadores (name) VALUES (?)";
+        String sql = "INSERT INTO doadores (nome) VALUES (?)";
         jdbc.update(sql, doador.getNome());
     }
 
@@ -33,7 +33,7 @@ public class DoadorRepository {
 
     // Atualizar um doador
     public void updateDoador(Doador doador) {
-        String sql = "UPDATE doadores SET name = ? WHERE doadorID = ?";
+        String sql = "UPDATE doadores SET nome = ? WHERE doadorID = ?";
         jdbc.update(sql, doador.getNome(), doador.getDoadorID());
     }
 

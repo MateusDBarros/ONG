@@ -19,7 +19,7 @@ public class OngRepository {
     // Cadastrar nova ong
     public void novaOng(Ong ong) {
         String sql = "INSERT INTO ong_table (nome, categoria, saldo) VALUES (?,?,?)";
-        jdbc.update(sql, ong.getNome(), ong.getCategoria(), ong.getSaldo());
+        jdbc.update(sql, ong.getNome(), ong.getCategoria().name(), ong.getSaldo());
     }
 
     // Vizualizar ongs
@@ -49,7 +49,7 @@ public class OngRepository {
     // Atualizar ong
     public void updateOng(Ong ong) {
         String sql = "UPDATE ong_table SET nome = ?, categoria = ?, saldo = ? WHERE ong_id = ?";
-        jdbc.update(sql, ong.getNome(), ong.getCategoria(), ong.getSaldo(),ong.getOng_id());
+        jdbc.update(sql, ong.getNome(), ong.getCategoria().name(), ong.getSaldo(),ong.getOng_id());
     }
 
     // Deletar ong

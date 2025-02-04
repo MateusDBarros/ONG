@@ -1,13 +1,16 @@
 package mb.projeto.ONG.doacoes.Model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
 
 public class Doacao {
 
     private long doacaoID;
     private long doadorID;
-    private long ongID;
+    private long ong_id;
     private double valor;
+
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime data;
 
     public Doacao() {
@@ -17,7 +20,7 @@ public class Doacao {
         this.doacaoID = doacaoID;
         this.data = data;
         this.valor = valor;
-        this.ongID = ongID;
+        this.ong_id = ongID;
         this.doadorID = doadorID;
     }
 
@@ -45,12 +48,12 @@ public class Doacao {
         this.valor = valor;
     }
 
-    public long getOngID() {
-        return ongID;
+    public long getOng_id() {
+        return ong_id;
     }
 
-    public void setOngID(long ongID) {
-        this.ongID = ongID;
+    public void setOng_id(long ong_id) {
+        this.ong_id = ong_id;
     }
 
     public long getDoadorID() {

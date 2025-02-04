@@ -3,9 +3,11 @@ package mb.projeto.ONG.doacoes.Service;
 import mb.projeto.ONG.doacoes.Model.Doacao;
 import mb.projeto.ONG.doacoes.Repository.DoacaoRepository;
 import mb.projeto.ONG.ongs.Repository.OngRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class DoacaoService {
 
     private final DoacaoRepository repository;
@@ -17,12 +19,18 @@ public class DoacaoService {
     }
 
     public void novaDoacao(Doacao doacao) {
+        if (doacao == null)
+            throw new IllegalArgumentException("A doação não pode ser nula");
+
         if (doacao.getValor() <= 0)
-            throw new IllegalStateException("O valor da doação precisa ser maior que 0");
-        if (doacao.getData() == null)
-            throw new IllegalStateException("Por favor insira uma data válida");
+            throw new IllegalArgumentException("O valor da doação precisa ser maior que 0");
+
+        if (doacao.getData() == null)   // Ou doacao.getDataDoacao(), conforme seu modelo
+            throw new IllegalArgumentException("Por favor, insira uma data válida");
+
         repository.novaDoacao(doacao);
     }
+
 
     public List<Doacao> listarDoacoes() {
         return repository.listarDoacoes();

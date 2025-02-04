@@ -4,6 +4,7 @@ import mb.projeto.ONG.doacoes.Model.Doacao;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.PreparedStatement;
 import java.util.List;
 
 @Repository
@@ -16,8 +17,17 @@ public class DoacaoRepository {
     }
 
     public void novaDoacao(Doacao doacao) {
-        String sql = "INSERT INTO doacoes (ongID, doadorID, datatempo, valor) VALUES (?, ?, ?, ?)";
-        jdbc.update(sql, doacao.getOngID(), doacao.getDoadorID(), doacao.getData(), doacao.getValor());
+        String sql = "INSERT INTO doacoes (doadorID, ong_id, datatempo, valor) VALUES (?, ?, ?, ?)";
+        jdbc.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setLong(1, doacao.getDoadorID());
+            ps.setLong(2, doacao.getOng_id());
+            // Passa o LocalDateTime diretamente, informando que o tipo SQL é TIMESTAMP:
+            ps.setObject(3, doacao.getData(), java.sql.Types.TIMESTAMP);
+            ps.setDouble(4, doacao.getValor());
+            return ps;
+        });
+
     }
 
     public List<Doacao> listarDoacoes() {
@@ -25,7 +35,7 @@ public class DoacaoRepository {
         return jdbc.query(sql, (rs, rowNum) ->
                 new Doacao(
                         rs.getLong("doacaoID"),
-                        rs.getLong("ongID"),
+                        rs.getLong("ong_id"),
                         rs.getLong("doadorID"),
                         rs.getTimestamp("datatempo").toLocalDateTime(),
                         rs.getDouble("valor")
@@ -37,7 +47,7 @@ public class DoacaoRepository {
         return jdbc.queryForObject(sql, new Object[] {id}, (rs, rowNum) ->
                 new Doacao(
                         rs.getLong("doacaoID"),
-                        rs.getLong("ongID"),
+                        rs.getLong("ong_id"),
                         rs.getLong("doadorID"),
                         rs.getTimestamp("datatempo").toLocalDateTime(),
                         rs.getDouble("valor")
