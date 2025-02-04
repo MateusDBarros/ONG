@@ -42,7 +42,7 @@ public class OngController {
     // Metodo PUT
     @PutMapping
     public ResponseEntity<String> updateOng(@RequestBody Ong ong, @PathVariable long id) {
-        ong.setOngID(id);
+        ong.setOng_id(id);
         services.updateOng(ong);
         return ResponseEntity.status(HttpStatus.OK).body("Dados do id: " + id +" foram atualizados com sucesso!");
     }

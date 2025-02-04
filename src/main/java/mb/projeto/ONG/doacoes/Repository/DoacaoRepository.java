@@ -16,7 +16,7 @@ public class DoacaoRepository {
     }
 
     public void novaDoacao(Doacao doacao) {
-        String sql = "INSERT INTO doacoes (ongID, doadorID, data, valor) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO doacoes (ongID, doadorID, datatempo, valor) VALUES (?, ?, ?, ?)";
         jdbc.update(sql, doacao.getOngID(), doacao.getDoadorID(), doacao.getData(), doacao.getValor());
     }
 
@@ -27,7 +27,7 @@ public class DoacaoRepository {
                         rs.getLong("doacaoID"),
                         rs.getLong("ongID"),
                         rs.getLong("doadorID"),
-                        rs.getTimestamp("data").toLocalDateTime(),
+                        rs.getTimestamp("datatempo").toLocalDateTime(),
                         rs.getDouble("valor")
                 ));
     }
@@ -39,7 +39,7 @@ public class DoacaoRepository {
                         rs.getLong("doacaoID"),
                         rs.getLong("ongID"),
                         rs.getLong("doadorID"),
-                        rs.getTimestamp("data").toLocalDateTime(),
+                        rs.getTimestamp("datatempo").toLocalDateTime(),
                         rs.getDouble("valor")
                 ));
     }

@@ -2,7 +2,7 @@ package mb.projeto.ONG.ongs.Model;
 
 public class Ong {
 
-    private long ongID;
+    private long ong_id;
     private String nome;
     private Categoria categoria;
     private double saldo;
@@ -11,18 +11,18 @@ public class Ong {
     }
 
     public Ong(long ongID, String nome, Categoria categoria, double saldo) {
-        this.ongID = ongID;
+        this.ong_id = ongID;
         this.saldo = saldo;
         this.categoria = categoria;
         this.nome = nome;
     }
 
-    public long getOngID() {
-        return ongID;
+    public long getOng_id() {
+        return ong_id;
     }
 
-    public void setOngID(long ongID) {
-        this.ongID = ongID;
+    public void setOng_id(long ong_id) {
+        this.ong_id = ong_id;
     }
 
     public String getNome() {
